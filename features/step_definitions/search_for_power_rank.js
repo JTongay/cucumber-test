@@ -12,10 +12,6 @@ defineSupportCode(function({Before, Given, When, Then}) {
    // Does some slow browser/filesystem/network actions
   });
 
-  // Given('I am on Joey\'s portfolio' , function() {
-  //   this.driver.get('https://josephtongay.me');
-  // });
-
   When('I click on the project titled {stringInDoubleQuotes}', function (text) {
     console.log(this.driver.findElement);
     return this.driver.findElement({id: text}).then(function(element) {
