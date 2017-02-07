@@ -25,3 +25,37 @@
 >selenium-standalone start
 
 - Type in 'npm test' and you have them tests running.
+
+##Cucumber Notes
+
+Cucumber is a testing framework, using Gherkin syntax, and is the most readable language that lets you describe software's behavior without detailing how that behaviour is implemented. I've used this before a little bit with Ruby on Rails and started reading 'The RSPEC Book' going into more detail about BDD and TDD.
+
+Cucumber deals with step definitions and certain key words to go over features and scenarios.
+
+##Feature
+
+Cucumber starts out with creating a '.feature' file in the 'features' directory. In that file, that is where you write out your features and scenarios. You start out with the feature itself. An Example of that would be:
+
+```Cucumber
+Feature: Some terse yet descriptive text of what is desired
+  Textual description of the business value of this feature
+  Business rules that govern the scope of the feature
+  Any additional information that will make the feature easier to understand
+```
+
+Every '.feature' file conventionally consists of a single feature. In that feature, it outlines a 'scenario' which must start with one of the keywords "Given", "When", "Then", "But", or "And". Here's what one would look like:
+
+```Cucumber
+Feature: Serve coffee
+  Coffee should not be served until paid for
+  Coffee should not be served until the button has been pressed
+  If there is no coffee left then money should be refunded
+
+Scenario: Buy last coffee
+  Given there are 1 coffees left in the machine
+  And I have deposited 1$
+  When I press the coffee button
+  Then I should be served a coffee
+```
+
+##Given-When-Then
