@@ -58,4 +58,61 @@ Scenario: Buy last coffee
   Then I should be served a coffee
 ```
 
-##Given-When-Then
+##Given-When-Then Scenarios
+
+Cucumber scenarios consists of steps, also known as Givens, Whens, and Thens. Technically it doesn't distinguish between these three kinds of steps, however it is best practice that you do.
+
+####Given
+
+The purpose of givens is to put the system in a known state before the user starts interacting with the system(in the when steps). Avoid talking about user interaction in this step.
+
+Examples:
+  - Create records (model instances) / set up the database state.
+  - It's ok to call into the layer "inside" the UI layer here.
+  - Log in a user. (An exception to the no interaction recommendation.)
+
+####When
+
+The purpose of when steps is the describe the key action the user performs (or using a state transition).
+
+Examples:
+  - Interact with a web page
+  - Interact with some other user interface element.
+
+####Then
+
+The purpose of then steps is to observe outcomes. The observations should be related to the business value/benefit in your feature description. It should also be a kind of output that is something that comes out of the system and not something that is deeply buried inside it.
+
+Examples:
+  - Verify that something related to the Given+When (or is not) in the output.
+  - Check that some external system has received the expected message.
+
+You should only verify outcome that is observable to the user, don't do it to just look in the database.
+
+####And, But
+
+The purpose of these is just to make things more readable if you have multiple 'givens, whens, or thens'.
+
+Example: Instead of this...
+
+```Cucumber
+Scenario: Multiple Givens
+  Given one thing
+  Given another thing
+  Given yet another thing
+  When I open my eyes
+  Then I see something
+  Then I don't see something else
+```
+
+You can do this....
+
+```Cucumber
+Scenario: Multiple Givens
+  Given one thing
+    And another thing
+    And yet another thing
+  When I open my eyes
+  Then I see something
+    But I don't see something else
+```
