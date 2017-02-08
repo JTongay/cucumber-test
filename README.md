@@ -161,3 +161,14 @@ Scenario Outline: eating
 ```
 
 The Scenario Outline steps provide a template which is never directly run. A Scenario Outline is run once for each row in the Examples section beneath it.
+
+#Selenium
+
+This is a very broad topic, so I'm just going to narrow it down to what I'm using.
+
+This is the nuts and bolts to automated testing. When you spin up a selenium server and run your tests, it will open a web browser or phone you chose in your World Object, and go through the scenarios you wrote in Cucumber.
+
+This is what I'm supposed to be using.
+http://webdriver.io/
+
+Webdriver.io sends requests to a Selenium server via the WebDriver protocol and handles its response. Services like Saucelabs provide selenium testing on remote hosts.
