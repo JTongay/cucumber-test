@@ -116,3 +116,48 @@ Scenario: Multiple Givens
   Then I see something
     But I don't see something else
 ```
+
+##Background
+
+Background allows you to add some context to the scenarios in a single feature. A Background is much like a scenario containing a number of steps. It is a simple "beforeEach" hook on your scenarios.
+
+Good practices for using Background:
+
+  - Don't use "Background" to set up complicated state unless that state is actually something the client needs to know.
+  - Keep your "Background" section short.
+  - Make your "Background" section vivid.
+  - Keep your scenarios short, and don't have too many.
+
+##Scenario Outlines
+
+Ok. This is dope. I've seen this before with Rails. Here's what it is.
+
+Copying and pasting scenarios to use different values quickly becomes tedious and repetitive.
+
+```Cucumber
+Scenario: eat 5 out of 12
+  Given there are 12 cucumbers
+  When I eat 5 cucumbers
+  Then I should have 7 cucumbers
+
+Scenario: eat 5 out of 20
+  Given there are 20 cucumbers
+  When I eat 5 cucumbers
+  Then I should have 15 cucumbers
+```
+
+Scenario outlines allow us to more concisely express these examples through the use of a template with placeholders, using 'Scenario Outline', 'Examples' with tables and '< >' delimeted parameters.
+
+```Cucumber
+Scenario Outline: eating
+  Given there are <start> cucumbers
+  When I eat <eat> cucumbers
+  Then I should have <left> cucumbers
+
+  Examples:
+    | start | eat | left |
+    |  12   |  5  |  7   |
+    |  20   |  5  |  15  |
+```
+
+The Scenario Outline steps provide a template which is never directly run. A Scenario Outline is run once for each row in the Examples section beneath it.
