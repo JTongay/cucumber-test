@@ -18,6 +18,8 @@ defineSupportCode(function({Before, Given, When, Then}) {
 
   When('I enter {stringInSoubleQuotes} into {stringInSingleQuotes}', function (text1, text2) {
     console.log(this.driver.findElement);
+    console.log(text2);
+    console.log(text1);
     return this.driver.findElement({id: text2}).then(function(element) {
       return element.sendKeys(text1);
     });
